@@ -1,29 +1,29 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet, View, Text } from 'react-native';
+import TaskCard from './components/TaskCard';
 
-import WelcomeScreen from './screens/WelcomeScreen';
-import AddTaskScreen from './screens/AddTaskScreen';
-const Stack = createNativeStackNavigator();
 export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.heading}>My Tasks</Text>
+      <TaskCard title="Finish Lab 2" done={false} />
+      <TaskCard title="Read Chapter 3" done={true} />
+      <TaskCard title="Walk the dog" done={false} />
+      {/* Step 5: Experiment: add a 4th task */}
+      <TaskCard title="Buy groceries" done={true} />
+    </View>
+  );
+}
 
-return (
-<NavigationContainer>
-
-<Stack.Navigator initialRouteName="Welcome">
-
-<Stack.Screen
-name="Welcome"
-component={WelcomeScreen}
-options={{ headerShown: false }}
-
-/>
-<Stack.Screen
-name="AddTask"
-component={AddTaskScreen}
-options={{ title: 'My Tasks' }}
-
-/>
-</Stack.Navigator>
-</NavigationContainer>
-
-);}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 60,
+    paddingHorizontal: 16,
+    backgroundColor: '#FFFFFF'
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 12
+  }
+});
